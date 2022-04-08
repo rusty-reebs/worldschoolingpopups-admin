@@ -27,7 +27,7 @@ const Nav = (props) => {
               alt="logo"
             />
           </a>
-          &nbsp;worldschoolingpopups.com
+          &nbsp;wspopups - ADMIN SITE
         </h1>
         <div className="flex lg:hidden text-white">
           <button id="hamburger">
