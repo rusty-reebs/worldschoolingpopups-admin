@@ -1,3 +1,8 @@
+//! Open/continuous = The Hive, open all the time. Commit for any period of time.
+//! Fixed sessions = You need to work around their dates. Don't make the dates required for input.
+//! Full school year
+//! Remove entire Other information section
+
 import React, { useEffect } from "react";
 import { useState, useContext } from "react";
 import { AuthContext } from "../Routes";
@@ -5,7 +10,12 @@ import { useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { myApi } from "../App";
 import Nav from "./Nav";
-import Input, { SelectInput, CountryInput, TextAreaInput } from "./Input";
+import Input, {
+  AccomInput,
+  SessionInput,
+  CountryInput,
+  TextAreaInput,
+} from "./Input";
 import Button from "./Button";
 import { CloudinaryUploadWidget } from "./Cloudinary";
 import "../index.css";
@@ -16,7 +26,7 @@ const CreateEvent = (props) => {
   const [city, setCity] = useState("");
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
-  const [eventType, setEventType] = useState(true); // true = "fixed"
+  const [eventType, setEventType] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
@@ -40,7 +50,6 @@ const CreateEvent = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("user context", user);
     if (!user) {
       navigate("/");
     }
@@ -55,7 +64,8 @@ const CreateEvent = (props) => {
     setErrorsArray("");
     e.preventDefault();
     try {
-      let res = await fetch("https://fierce-reef-16155.herokuapp.com/events", {
+      let res = await fetch(myApi + "/events", {
+        // let res = await fetch("https://fierce-reef-16155.herokuapp.com/events", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -75,8 +85,8 @@ const CreateEvent = (props) => {
           accomIncluded: accomIncluded,
           ageMin: ageMin,
           ageMax: ageMax,
-          tempHigh: tempHigh,
-          tempLow: tempLow,
+          // tempHigh: tempHigh,
+          // tempLow: tempLow,
           description: description,
           contactName: contactName,
           contactEmail: contactEmail,
@@ -108,7 +118,8 @@ const CreateEvent = (props) => {
         setSuccess(true);
         let eventId = responseJson.newEvent._id.toString();
         setTimeout(() => {
-          return navigate("/events/" + eventId);
+          // return navigate("/events/" + eventId);
+          return navigate("/events");
         }, 1000);
       }
     } catch (err) {
@@ -171,15 +182,17 @@ const CreateEvent = (props) => {
                 onChange={(e) => setLon(e.target.value)}
               />
             </div>
-            <SelectInput
+            <SessionInput
               name="eventtype"
               placeholder=""
               label="Event Type"
-              firstOption={"Fixed Date"}
-              secondOption={"Open-Ended / Multi-Session"}
+              firstOption={"Fixed Session"}
+              secondOption={"Open-ended / Continuous"}
+              thirdOption={"Full School Year"}
               required="true"
               value={eventType}
-              onChange={handleChange}
+              // onChange={handleChange}
+              onChange={(e) => setEventType(e.target.value)}
             />
             <Input
               name="dateStart"
@@ -199,7 +212,7 @@ const CreateEvent = (props) => {
               value={dateEnd}
               onChange={(e) => setDateEnd(e.target.value)}
             />
-            <SelectInput
+            <AccomInput
               name="accomIncluded"
               placeholder=""
               label="Accommodation Included"
@@ -227,7 +240,7 @@ const CreateEvent = (props) => {
                 onChange={(e) => setAgeMax(e.target.value)}
               />
             </div>
-            <div className="flex gap-x-2">
+            {/* <div className="flex gap-x-2">
               <Input
                 name="tempHigh"
                 placeholder=""
@@ -244,7 +257,7 @@ const CreateEvent = (props) => {
                 value={tempLow}
                 onChange={(e) => setTempLow(e.target.value)}
               />
-            </div>
+            </div> */}
             <TextAreaInput
               name="description"
               placeholder=""

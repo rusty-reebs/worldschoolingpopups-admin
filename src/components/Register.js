@@ -23,7 +23,8 @@ const Register = (props) => {
     e.preventDefault();
     try {
       let res = await fetch(
-        "https://fierce-reef-16155.herokuapp.com/register",
+        "/register",
+        // "https://fierce-reef-16155.herokuapp.com/register",
         {
           method: "POST",
           headers: {

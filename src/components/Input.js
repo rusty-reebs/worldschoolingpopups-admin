@@ -80,7 +80,7 @@ const TextAreaInput = ({ name, label, required, value, onChange }) => {
   );
 };
 
-const SelectInput = ({
+const AccomInput = ({
   name,
   label,
   firstOption,
@@ -108,6 +108,36 @@ const SelectInput = ({
     </div>
   );
 };
+const SessionInput = ({
+  name,
+  label,
+  firstOption,
+  secondOption,
+  thirdOption,
+  onChange,
+  required,
+}) => {
+  return (
+    <div className="bg-white border transition duration-150 ease-in-out focus-within:border-orange border-black rounded-md mb-2">
+      <label
+        htmlFor={name}
+        className="text-xs font-light placeholder-black px-2 pt-1.5"
+      >
+        {label}
+        {required ? <span className="text-red">*</span> : null}
+      </label>
+      <select
+        id={name}
+        onChange={onChange}
+        className="bg-white focus:outline-none mb-2 text-base font-light placeholder-black w-full px-1"
+      >
+        <option value={firstOption}>{firstOption}</option>
+        <option value={secondOption}>{secondOption}</option>
+        <option value={thirdOption}>{thirdOption}</option>
+      </select>
+    </div>
+  );
+};
 
 const CountryInput = ({ name, label, required, value, onChange }) => {
   return (
@@ -130,4 +160,4 @@ const CountryInput = ({ name, label, required, value, onChange }) => {
 };
 
 export default Input;
-export { CountryInput, SelectInput, ImageInput, TextAreaInput };
+export { CountryInput, SessionInput, AccomInput, ImageInput, TextAreaInput };

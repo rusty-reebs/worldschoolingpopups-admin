@@ -30,7 +30,8 @@ const Detail = (props) => {
     try {
       const loadEvent = async () => {
         let data = await fetch(
-          "https://fierce-reef-16155.herokuapp.com/events/" + eventId,
+          myApi + "/events/" + eventId,
+          // "https://fierce-reef-16155.herokuapp.com/events/" + eventId,
           {
             method: "GET",
             // mode: "cors",

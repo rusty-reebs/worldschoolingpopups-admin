@@ -40,25 +40,25 @@ const Nav = (props) => {
           </button>
         </div>
         <div className="toggle hidden lg:flex w-full lg:w-auto text-center text-bold mt-5 lg:mt-0 border-t-2 border-lightblue lg:border-none">
-          <Link
+          {/* <Link
             to="/events"
             className="block lg:inline-block text-lightblue hover:text-white px-3 py-3 border-b-2 border-lightblue lg:border-none lg:text-lg"
           >
             🏠&nbsp;&nbsp;Home
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             to="/about"
             className="block lg:inline-block text-lightblue hover:text-white px-3 py-3 border-b-2 border-lightblue lg:border-none lg:text-lg"
           >
             ℹ️&nbsp;&nbsp;About
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             to="/events/map"
             className="block lg:inline-block text-lightblue hover:text-white px-3 py-3 border-b-2 border-lightblue lg:border-none lg:text-lg"
           >
             🗺&nbsp;&nbsp;Map
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             // to="/events/search"
             to="#"
             className="block lg:inline-block text-lightblue hover:text-white px-3 py-3 border-b-2 border-lightblue lg:border-none lg:text-lg"
@@ -68,15 +68,15 @@ const Nav = (props) => {
               <i className="fas fa-star text-yellow"></i>&nbsp;Coming
               Soon!&nbsp;<i className="fas fa-star text-yellow"></i>
             </p>
-          </Link>
-          {!user ? (
+          </Link> */}
+          {/* {!user ? (
             <Link
               to="/newuser"
               className="block lg:inline-block text-lightblue hover:text-white px-3 py-3 border-b-2 border-lightblue lg:border-none lg:text-lg"
             >
               <p>List Your Event</p>
             </Link>
-          ) : null}
+          ) : null} */}
           {/* {user ? (
             <Link
               // to="/events/user._id"
@@ -102,14 +102,14 @@ const Nav = (props) => {
               <p>Manage Events</p>
             </Link>
           ) : null} */}
-          {!user ? (
+          {/* {!user ? (
             <Link
               to="/register"
               className="block lg:inline-block text-lightblue hover:text-white px-3 py-3 border-b-2 border-lightblue lg:border-none lg:text-lg"
             >
               Register
             </Link>
-          ) : null}
+          ) : null} */}
           {!user ? (
             <Link
               to="/login"

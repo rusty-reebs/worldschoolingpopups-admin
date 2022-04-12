@@ -11,7 +11,8 @@ const EventsMap = () => {
     try {
       const loadEvents = async () => {
         let data = await fetch(
-          "https://fierce-reef-16155.herokuapp.com/events",
+          myApi + "/events",
+          // "https://fierce-reef-16155.herokuapp.com/events",
           {
             // mode: "cors",
             "Access-Control-Allow-Origin": "*",
