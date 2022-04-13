@@ -12,7 +12,7 @@ import { myApi } from "../App";
 import Nav from "./Nav";
 import Input, {
   AccomInput,
-  SessionInput,
+  SessionSelect,
   CountryInput,
   TextAreaInput,
 } from "./Input";
@@ -182,17 +182,22 @@ const CreateEvent = (props) => {
                 onChange={(e) => setLon(e.target.value)}
               />
             </div>
-            <SessionInput
-              name="eventtype"
+            <SessionSelect
+              name="eventType"
               placeholder=""
               label="Event Type"
+              values={[
+                "Fixed Session",
+                "Open-ended / Continuous",
+                "Full School Year",
+              ]}
               firstOption={"Fixed Session"}
               secondOption={"Open-ended / Continuous"}
               thirdOption={"Full School Year"}
               required="true"
               value={eventType}
               // onChange={handleChange}
-              onChange={(e) => setEventType(e.target.value)}
+              callback={(value) => setEventType(value)}
             />
             <Input
               name="dateStart"

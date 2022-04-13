@@ -108,9 +108,11 @@ const AccomInput = ({
     </div>
   );
 };
-const SessionInput = ({
+const SessionSelect = ({
   name,
   label,
+  values,
+  callback,
   firstOption,
   secondOption,
   thirdOption,
@@ -128,7 +130,7 @@ const SessionInput = ({
       </label>
       <select
         id={name}
-        onChange={onChange}
+        onChange={({ target: { value } }) => callback(value)}
         className="bg-white focus:outline-none mb-2 text-base font-light placeholder-black w-full px-1"
       >
         <option value={firstOption}>{firstOption}</option>
@@ -160,4 +162,4 @@ const CountryInput = ({ name, label, required, value, onChange }) => {
 };
 
 export default Input;
-export { CountryInput, SessionInput, AccomInput, ImageInput, TextAreaInput };
+export { CountryInput, SessionSelect, AccomInput, ImageInput, TextAreaInput };
