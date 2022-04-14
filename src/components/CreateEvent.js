@@ -1,7 +1,4 @@
-//! Open/continuous = The Hive, open all the time. Commit for any period of time.
-//! Fixed sessions = You need to work around their dates. Don't make the dates required for input.
-//! Full school year
-//! Remove entire Other information section
+// CreateEvent.js
 
 import React, { useEffect } from "react";
 import { useState, useContext } from "react";
@@ -26,7 +23,7 @@ const CreateEvent = (props) => {
   const [city, setCity] = useState("");
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
-  const [eventType, setEventType] = useState("");
+  const [eventType, setEventType] = useState("Fixed Session");
   const [isDisabled, setIsDisabled] = useState(false);
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
@@ -187,16 +184,13 @@ const CreateEvent = (props) => {
               placeholder=""
               label="Event Type"
               values={[
-                "Fixed Session",
-                "Open-ended / Continuous",
-                "Full School Year",
+                ["Fixed Session", "Fixed Session"],
+                ["Open-ended / Continuous", "Open-ended / Continuous"],
+                ["Full School Year", "Full School Year"],
               ]}
-              firstOption={"Fixed Session"}
-              secondOption={"Open-ended / Continuous"}
-              thirdOption={"Full School Year"}
+              selectedValue={"Fixed Session"}
               required="true"
               value={eventType}
-              // onChange={handleChange}
               callback={(value) => setEventType(value)}
             />
             <Input

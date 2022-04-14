@@ -112,11 +112,8 @@ const SessionSelect = ({
   name,
   label,
   values,
+  selectedValue,
   callback,
-  firstOption,
-  secondOption,
-  thirdOption,
-  onChange,
   required,
 }) => {
   return (
@@ -131,11 +128,14 @@ const SessionSelect = ({
       <select
         id={name}
         onChange={({ target: { value } }) => callback(value)}
+        defaultValue={selectedValue}
         className="bg-white focus:outline-none mb-2 text-base font-light placeholder-black w-full px-1"
       >
-        <option value={firstOption}>{firstOption}</option>
-        <option value={secondOption}>{secondOption}</option>
-        <option value={thirdOption}>{thirdOption}</option>
+        {values.map(([value, text]) => (
+          <option key={value} value={value}>
+            {text}
+          </option>
+        ))}
       </select>
     </div>
   );
