@@ -41,21 +41,49 @@ const App = ({ user, setUser }) => {
     }
   }, []);
 
+  const eventIds = eventData.map((event) => {
+    return { pathname: "/events/" + event._id + "/update", event: event };
+  });
+
   return (
     <div className="bg-yellow min-h-screen w-full">
       <Nav />
       <div className="flex flex-col mx-4 lg:flex lg:flex-col lg:justify-center lg:mx-10">
         <h3 className="text-center text-lg lg:text-2xl mb-4">
           {user ? (
-            <p>
-              <Link
-                to="/events/create"
-                className="underline decoration-orange decoration-2"
-              >
-                Create a new event
-              </Link>
-              .
-            </p>
+            <div>
+              <p>
+                <Link
+                  to="/events/create"
+                  className="underline decoration-orange decoration-2"
+                >
+                  Create a new event
+                </Link>
+                .
+              </p>
+              <div className="h-10"></div>
+              <div className="flex flex-col justify-center">
+                <h3>All Events</h3>
+                {eventData.map((event, index) => {
+                  return (
+                    <div key={index} className="flex justify-between">
+                      <div>
+                        <p>{event.name}</p>
+                      </div>
+                      <div className="flex gap-4 underline decoration-orange">
+                        <Link
+                          to={eventIds[index]}
+                          state={{ eventData: eventIds[index].event }}
+                        >
+                          Edit
+                        </Link>
+                        <Link to="/">Delete</Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           ) : (
             <p>
               <Link
