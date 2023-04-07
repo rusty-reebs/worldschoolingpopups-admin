@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./index.css";
 import Nav from "./components/Nav";
-import Card from "./components/Card";
-import Button from "./components/Button";
 
 // const myApi = process.env.REACT_APP_DEV_API;
 const myApi = process.env.REACT_APP_PROD_API;
@@ -48,54 +46,41 @@ const App = ({ user, setUser }) => {
   return (
     <div className="bg-yellow min-h-screen w-full">
       <Nav />
-      <div className="flex flex-col mx-4 lg:flex lg:flex-col lg:justify-center lg:mx-10">
-        <h3 className="text-center text-lg lg:text-2xl mb-4">
-          {user ? (
-            <div>
-              <p>
-                <Link
-                  to="/events/create"
-                  className="underline decoration-orange decoration-2"
+      <div className="flex flex-col lg:justify-center">
+        {user ? (
+          <div className="flex flex-col">
+            <h3 className="text-xl mx-auto pt-8 pb-10">All Events</h3>
+            <div className="flex flex-col gap-3 mx-auto">
+              {eventData.map((event, index) => (
+                <div
+                  key={index}
+                  className="flex gap-10 p-2 border border-slate-600 rounded-md shadow-sm text-lg last:mb-10"
                 >
-                  Create a new event
-                </Link>
-                .
-              </p>
-              <div className="h-10"></div>
-              <div className="flex flex-col justify-center">
-                <h3>All Events</h3>
-                {eventData.map((event, index) => {
-                  return (
-                    <div key={index} className="flex justify-between">
-                      <div>
-                        <p>{event.name}</p>
-                      </div>
-                      <div className="flex gap-4 underline decoration-orange">
-                        <Link
-                          to={eventIds[index]}
-                          state={{ eventData: eventIds[index].event }}
-                        >
-                          Edit
-                        </Link>
-                        <Link to="/">Delete</Link>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+                  <div>{event.name}</div>
+                  <div className="flex gap-4 ml-auto underline decoration-orange">
+                    <Link
+                      to={eventIds[index]}
+                      state={{ eventData: eventIds[index].event }}
+                    >
+                      Edit
+                    </Link>
+                    <Link to="/">Delete</Link>
+                  </div>
+                </div>
+              ))}
             </div>
-          ) : (
-            <p>
-              <Link
-                to="/login"
-                className="underline decoration-orange decoration-2"
-              >
-                Log in
-              </Link>
-              .
-            </p>
-          )}
-        </h3>
+          </div>
+        ) : (
+          <p className="mx-auto">
+            <Link
+              to="/login"
+              className="text-xl underline decoration-orange decoration-2"
+            >
+              Log in
+            </Link>
+            .
+          </p>
+        )}
       </div>
     </div>
   );

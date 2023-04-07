@@ -29,19 +29,6 @@ const Login = (props) => {
           password: password,
         }),
       });
-      // let res = await fetch("https://fierce-reef-16155.herokuapp.com/login", {
-      //   method: "POST",
-      //   credentials: "include",
-      //   headers: {
-      //     Accept: "application/json, text/plain, */*",
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     username: email,
-      //     password: password,
-      //   }),
-      // });
-      // console.log("raw res", res);
       if (!res.ok) {
         const message = `An error has occurred: ${res.status} - ${res.statusText}`;
         throw new Error(message);
